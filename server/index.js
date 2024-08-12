@@ -25,26 +25,9 @@ app.use('/api/register', require('./routers/register'))
 app.use('/api/casuality', require('./routers/casuality'))
 app.use('/api/users', require('./routers/user'))
 
-
-// app.post('/register', async (req, res) => {
-//   const { username, password } = req.body;
-
-//   try {
-//     // Hash the password before storing it
-//     const hashedPassword = await bcrypt.hash(password, 10);
-
-//     const user = new User({
-//       username,
-//       password: hashedPassword,
-//     });
-
-//     await user.save();
-//     res.json({ message: 'User registered successfully' });
-//   } catch (error) {
-//     res.status(500).json({ error: 'Registration failed' });
-//   }
-// });
-
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
