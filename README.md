@@ -4,7 +4,7 @@ The application collects a range of patient data, including symptoms, age, and b
 
 # 1. Home
 <div style="display: flex">
-  <img src="path/to/your/image.png" alt="Alt text" width="200"/>
+  <img src="images/Home.png" alt="Alt text" width="200"/>
 </div>
 
 This is some text that starts from the left and wraps around the image. You can keep typing here, and the text will flow around the image until it reaches the bottom of the image, after which it will continue normally.  
