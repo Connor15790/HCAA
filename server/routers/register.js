@@ -2,8 +2,6 @@ const router = require('express').Router();
 const user = require('../models/User')
 require('cookie-parser');
 
-
-
 router.route('/')
     .post(async (req, res) => {
         console.log(req.body, "req.body")

@@ -12,8 +12,12 @@ const port = process.env.PORT;
 // Replace with your MongoDB URI
 
 app.use(cors());
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
-
+mongoose.connect(process.env.MONGO_URL, { 
+  useNewUrlParser: true, 
+  useUnifiedTopology: true 
+})
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.log(err));
 
 app.use(bodyParser.json());
 app.use('/api/login', require('./routers/login'))
