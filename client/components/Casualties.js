@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useCallback, useState, useMemo, useEffect } from 'react';
-import { Text, View, SafeAreaView, StyleSheet, Image, FlatList, TouchableOpacity, TextInput, ScrollView, Pressable } from 'react-native';
+import { Text, View, SafeAreaView, StyleSheet, Image, FlatList, TouchableOpacity, TextInput, ScrollView, Pressable, ActivityIndicator } from 'react-native';
 import RadioGroup from 'react-native-radio-buttons-group';
 import { SelectList } from 'react-native-dropdown-select-list'
 import styles from './styles/casualties.style';
@@ -18,23 +18,17 @@ Feather.loadFont();
 MaterialCommunityIcons.loadFont();
 
 export default Casualties = ({ navigation }) => {
-    const [selected, setSelected] = React.useState([]);
-    const [disease, setDisease] = React.useState([]);
-    const [medications, setMedications] = React.useState([]);
+    const [selected, setSelected] = useState([]);
+    const [disease, setDisease] = useState([]);
+    const [medications, setMedications] = useState([]);
 
     const [selectedId, setSelectedId] = useState();
     const [selectedLabel, setSelectedLabel] = useState(null);
     const [ageselected, setAgeSelected] = useState("");
     const [bgselected, setBgSelected] = useState("");
-    const [injuryTime, setInjuryTime] = useState("");
     const [synopsisselected, setSynopsisSelected] = useState([]);
     const [name, setName] = useState("");
-    const [injuryLocation, setInjuryLocation] = useState("")
-
-    // useEffect(() => {
-    //     sendDiseaseData();
-    //     // console.log(selected);
-    // });
+    const [loading, setLoading] = useState(false);
 
     const sendDiseaseData = async () => {
         console.log(selected.join(" "))
@@ -69,9 +63,13 @@ export default Casualties = ({ navigation }) => {
     }
 
     const handleNextPress = async () => {
+        setLoading(true);
+
         await sendDiseaseData();
         await sendMedsData();
-        
+
+        setLoading(false);
+
         navigate2Casualties2();
     };
 
@@ -259,7 +257,10 @@ export default Casualties = ({ navigation }) => {
                 </View>
 
                 <View style={styles.nextContainer}>
-                    <TouchableOpacity
+                    {loading ? (
+                        <ActivityIndicator size="large" color="#0000ff" />
+                    ) : (
+                        <TouchableOpacity
                         style={[styles.nextBtn, {
                             backgroundColor: !selectedId || !name || !bgselected || !synopsisselected ? "#B7BCB5" : "black",
                             borderWidth: !selectedId || !name || !bgselected || !synopsisselected ? 0 : 1
@@ -270,6 +271,7 @@ export default Casualties = ({ navigation }) => {
                         disabled={!selectedId || !name || !bgselected || !synopsisselected ? true : false}>
                         <Text style={styles.nextBtnText}>Next</Text>
                     </TouchableOpacity>
+                    )}
                 </View>
             </ScrollView>
         </View>
