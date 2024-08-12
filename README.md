@@ -9,3 +9,19 @@ This is the home page of the application, featuring three tabs: Casualty, Record
 
 # 2. Casualties1
 <img src="images/Casualties1.jpeg" alt="Alt text" width="200"/>
+
+This is the page where the patient's  data will be collected.
+
+# 3. Casualties2
+<img src="images/Casualties2.jpeg" alt="Alt text" width="200"/>
+
+After the machine learning algorithm accurately predicts the disease and medications, they will be displayed on this page. The patient's data can then be stored by pressing the submit button.
+
+# 4. Records
+<img src="images/Records.jpeg" alt="Alt text" width="200"/>
+
+The records tab stores the data of the admitted patients. Doctors can check on these patients through this app and edit the medications if it is required. After the patient is properly treated, they can be removed from the database.
+# 5. Emergency
+<img src="images/Emergency.jpeg" alt="Alt text" width="200"/>
+
+This is the Emergency tab which provides the general public with essential first aid instructions for various injury situations.
